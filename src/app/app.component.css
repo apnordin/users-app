@@ -28,6 +28,12 @@
   text-align: center;
 }
 
+.error-message {
+  color: #f44336;
+  font-weight: 400;
+  margin: 4px;
+}
+
 .submit-button {
   margin: 8px 0px;
   width: 200px;

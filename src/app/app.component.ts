@@ -24,6 +24,8 @@ export class AppComponent {
   newCompany = "";
   newRespons = "";
   newPosition = "";
+  addEmploymentError = "";
+  addUserError = "";
 
   onUsernameInput(username: string) {
     this.newUsername = username;
@@ -69,6 +71,11 @@ export class AppComponent {
   }
 
   addEmployment() {
+    if (!this.newCompany || !this.newPosition || !this.newRespons) {
+      this.addEmploymentError = "Please include a company, position, and list of responsibilities"
+      return
+    }
+    this.addEmploymentError = ""
     const responsArray= this.newRespons.split("\n")
     const newJob = {
       company: this.newCompany,
@@ -82,6 +89,11 @@ export class AppComponent {
   }
 
   addUser() {
+    if (this.allEmployment.length <= 0) {
+      this.addUserError = "Please include at least one job in employment history"
+      return
+    }
+    this.addUserError = "";
     const userAddress = {
       street: this.newStreet,
       city: this.newCity,

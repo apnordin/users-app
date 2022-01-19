@@ -172,11 +172,22 @@
       >
       </textarea>
     </mat-form-field>
-    <button class="add-work" mat-stroked-button (click)="addEmployment()">
+    <p *ngIf="addEmploymentError" class="error-message">
+      {{ addEmploymentError }}
+    </p>
+    <button
+      type="button"
+      class="add-work"
+      mat-stroked-button
+      (click)="addEmployment()"
+    >
       Add Work History
     </button>
     <hr />
     <div class="submit-container">
+      <p *ngIf="addUserError" class="error-message">
+        {{ addUserError }}
+      </p>
       <button
         class="submit-button"
         mat-flat-button
