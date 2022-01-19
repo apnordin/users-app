@@ -1,4 +1,25 @@
 import { Component } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { doc, setDoc } from "firebase/firestore";
+
+export interface User {
+  username: string;
+  // address: {
+  //   street: string;
+  //   city: string;
+  //   state: string;
+  //   zip: number;
+  // };
+  phone: string;
+  email: string;
+  age: number | undefined;
+  // employment: {
+  //   company: string;
+  //   position: string;
+  //   responsibilities: string[];
+  // }[]
+}
 
 @Component({
   selector: 'app-root',
@@ -6,8 +27,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  userCollectionRef: AngularFirestoreCollection<User>;
+  user$: Observable<User[]>;
+  constructor(private afs: AngularFirestore) {
+    this.userCollectionRef= afs.collection("users");
+    this.user$ = this.userCollectionRef.valueChanges();
+  }
+  
+
   title = 'users-app';
-  newUser = {};
   newUsername = "";
   newStreet = "";
   newCity = "";
@@ -88,7 +116,7 @@ export class AppComponent {
     this.newRespons = "";
   }
 
-  addUser() {
+  async addUser() {
     if (this.allEmployment.length <= 0) {
       this.addUserError = "Please include at least one job in employment history"
       return
@@ -100,15 +128,18 @@ export class AppComponent {
       state: this.newState,
       zip: this.newZip,
     }
-    this.newUser = {
+    let thisUser: User = {
       username: this.newUsername,
-      address: userAddress,
+      // address: userAddress,
       phone: this.newPhone,
       email: this.newEmail,
       age: this.newAge,
-      employment: this.allEmployment,
+      // employment: this.allEmployment,
     }
-    console.log(this.newUser)
+    console.log(thisUser)
+
+    this.userCollectionRef.add(thisUser)
+
   }
 
 
