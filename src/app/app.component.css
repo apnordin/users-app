@@ -1,0 +1,35 @@
+.container {
+  padding: 24px 64px;
+  width: 60%;
+  max-width: 880px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.main-header {
+  font-weight: 500;
+}
+
+.form {
+  width: 96%;
+  position: absolute;
+  left: 0;
+}
+
+.respons-form {
+  width: 98%;
+}
+
+.add-work {
+  margin: 4px 0px 8px;
+}
+
+.submit-container {
+  text-align: center;
+}
+
+.submit-button {
+  margin: 8px 0px;
+  width: 200px;
+  height: 44px;
+}

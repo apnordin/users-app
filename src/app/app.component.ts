@@ -9,19 +9,40 @@ export class AppComponent {
   title = 'users-app';
   newUser = {};
   newUsername = "";
-  newAddress = "";
+  newStreet = "";
+  newCity = "";
+  newState = "";
+  newZip: number | undefined = undefined;
   newPhone = "";
   newEmail = "";
   newAge: number | undefined = undefined;
-  newExperience = "";
-  newEmployment = "";
+  allEmployment: {
+    company: string;
+    position: string;
+    responsibilities: string[];
+  }[] = [];
+  newCompany = "";
+  newRespons = "";
+  newPosition = "";
 
   onUsernameInput(username: string) {
     this.newUsername = username;
   }
 
-  onAddressInput(address: string) {
-    this.newAddress = address;
+  onStreetInput(street: string) {
+    this.newStreet = street;
+  }
+
+  onCityInput(city: string) {
+    this.newCity = city;
+  }
+
+  onStateInput(state: string) {
+    this.newState = state;
+  }
+
+  onZipInput(zip: string) {
+    this.newZip = Number(zip);
   }
   
   onPhoneInput(phone: string) {
@@ -34,24 +55,46 @@ export class AppComponent {
    onAgeInput(age: string) {
     this.newAge = Number(age);
   }
-
-  onExperienceInput(experience: string) {
-    this.newExperience = experience;
+  
+  onCompanyInput(company: string) {
+    this.newCompany = company;
   }
 
-  onEmploymentInput(employment: string) {
-    this.newEmployment = employment;
+  onPositionInput(position: string) {
+    this.newPosition = position;
+  }
+
+  onResponsInput(respons: string) {
+    this.newRespons = respons;
+  }
+
+  addEmployment() {
+    const responsArray= this.newRespons.split("\n")
+    const newJob = {
+      company: this.newCompany,
+      position: this.newPosition,
+      responsibilities: responsArray,
+    }
+    this.allEmployment.push(newJob)
+    this.newCompany = "";
+    this.newPosition = "";
+    this.newRespons = "";
   }
 
   addUser() {
+    const userAddress = {
+      street: this.newStreet,
+      city: this.newCity,
+      state: this.newState,
+      zip: this.newZip,
+    }
     this.newUser = {
       username: this.newUsername,
-      address: this.newAddress,
+      address: userAddress,
       phone: this.newPhone,
       email: this.newEmail,
       age: this.newAge,
-      experience: this.newExperience,
-      employment: this.newEmployment,
+      employment: this.allEmployment,
     }
     console.log(this.newUser)
   }
