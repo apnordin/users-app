@@ -2,18 +2,20 @@
   <h1 class="main-header">Enter a new user below!</h1>
   <hr />
   <h2>Information</h2>
-  <form (ngSubmit)="addUser()">
+  <form #formControl="ngForm" (ngSubmit)="addUser()">
     <mat-grid-list cols="2" rowHeight="80px">
       <mat-grid-tile>
         <mat-form-field class="form" appearance="fill">
           <mat-label>Name</mat-label>
           <input
             matInput
-            #usernameInput
+            #usernameInput="ngModel"
             type="text"
             [value]="newUsername"
             (input)="onUsernameInput(usernameInput.value)"
             required
+            ngModel
+            name="newUsername"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -22,10 +24,13 @@
           <mat-label>Email</mat-label>
           <input
             matInput
-            #emailInput
+            #emailInput="ngModel"
             type="email"
             [value]="newEmail"
             (input)="onEmailInput(emailInput.value)"
+            required
+            ngModel
+            name="newEmail"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -34,10 +39,13 @@
           <mat-label>Phone number</mat-label>
           <input
             matInput
-            #phoneInput
+            #phoneInput="ngModel"
             type="text"
             [value]="newPhone"
             (input)="onPhoneInput(phoneInput.value)"
+            required
+            ngModel
+            name="newPhone"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -46,11 +54,14 @@
           <mat-label>Age</mat-label>
           <input
             matInput
-            #ageInput
+            #ageInput="ngModel"
             placeholder="Age"
             type="number"
             [value]="newAge"
             (input)="onAgeInput(ageInput.value)"
+            required
+            ngModel
+            name="newAge"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -63,10 +74,13 @@
           <mat-label>Street Address</mat-label>
           <input
             matInput
-            #streetInput
+            #streetInput="ngModel"
             type="text"
             [value]="newStreet"
             (input)="onStreetInput(streetInput.value)"
+            required
+            ngModel
+            name="newStreet"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -75,10 +89,13 @@
           <mat-label>City</mat-label>
           <input
             matInput
-            #cityInput
+            #cityInput="ngModel"
             type="text"
             [value]="newCity"
             (input)="onCityInput(cityInput.value)"
+            required
+            ngModel
+            name="newCity"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -87,10 +104,13 @@
           <mat-label>State</mat-label>
           <input
             matInput
-            #stateInput
+            #stateInput="ngModel"
             type="text"
             [value]="newState"
             (input)="onStateInput(stateInput.value)"
+            required
+            ngModel
+            name="newState"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -99,10 +119,13 @@
           <mat-label>Zip Code</mat-label>
           <input
             matInput
-            #zipInput
+            #zipInput="ngModel"
             type="number"
             [value]="newZip"
             (input)="onZipInput(zipInput.value)"
+            required
+            ngModel
+            name="newZip"
           />
         </mat-form-field>
       </mat-grid-tile>
@@ -159,6 +182,7 @@
         mat-flat-button
         color="primary"
         type="submit"
+        [disabled]="!formControl.form.valid"
       >
         Add User
       </button>
