@@ -5,20 +5,20 @@ import { doc, setDoc } from "firebase/firestore";
 
 export interface User {
   username: string;
-  // address: {
-  //   street: string;
-  //   city: string;
-  //   state: string;
-  //   zip: number;
-  // };
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    zip: number | undefined;
+  };
   phone: string;
   email: string;
   age: number | undefined;
-  // employment: {
-  //   company: string;
-  //   position: string;
-  //   responsibilities: string[];
-  // }[]
+  employment: {
+    company: string;
+    position: string;
+    responsibilities: string[];
+  }[]
 }
 
 @Component({
@@ -128,13 +128,13 @@ export class AppComponent {
       state: this.newState,
       zip: this.newZip,
     }
-    let thisUser: User = {
+    const thisUser: User = {
       username: this.newUsername,
-      // address: userAddress,
+      address: userAddress,
       phone: this.newPhone,
       email: this.newEmail,
       age: this.newAge,
-      // employment: this.allEmployment,
+      employment: this.allEmployment,
     }
     console.log(thisUser)
 
