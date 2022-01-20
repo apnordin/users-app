@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { UserDialogComponent } from "../user-dialog/user-dialog.component"
+import {User} from "../app.component";
 
 @Component({
   selector: 'users-table',
@@ -20,9 +21,10 @@ export class UsersTableComponent implements OnInit {
 
   displayedColumns: string[] = ["username", "address", "email", "phone"];
 
-  openUserDialog(clickableUser: any) {
-    console.log("clicked!", clickableUser)
-    this.dialog.open(UserDialogComponent)
+  openUserDialog(clickableUser: User) {
+    this.dialog.open(UserDialogComponent, {
+      data: clickableUser
+    })
   } 
 
 }
