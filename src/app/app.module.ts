@@ -8,14 +8,20 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button";
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule} from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatTableModule } from '@angular/material/table';
+import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { UsersTableComponent } from './users-table/users-table.component';
 
 @NgModule({
+  entryComponents: [UserDialogComponent],
   declarations: [
     AppComponent,
+    UserDialogComponent,
+    UsersTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,8 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -53,7 +53,7 @@ export class AppComponent {
   addEmploymentError = "";
   addUserError = "";
 
-  displayedColumns: string[] = ["username", "address", "email", "phone"];
+
 
   onUsernameInput(username: string) {
     this.newUsername = username;
@@ -139,8 +139,5 @@ export class AppComponent {
     this.userCollectionRef.add(thisUser)
   }
 
-  openUserDialog(clickableUser: any) {
-    console.log("clicked!", clickableUser)
-  }
 
 }
