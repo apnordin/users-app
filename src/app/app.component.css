@@ -43,3 +43,7 @@
 .table {
   width: 100%;
 }
+
+.row {
+  cursor: pointer;
+}

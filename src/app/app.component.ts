@@ -139,6 +139,8 @@ export class AppComponent {
     this.userCollectionRef.add(thisUser)
   }
 
-  
+  openUserDialog(clickableUser: any) {
+    console.log("clicked!", clickableUser)
+  }
 
 }
