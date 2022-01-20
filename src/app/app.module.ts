@@ -11,6 +11,7 @@ import { MatButtonModule } from "@angular/material/button";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

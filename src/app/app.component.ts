@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { doc, setDoc } from "firebase/firestore";
 
 export interface User {
   username: string;
@@ -34,7 +33,6 @@ export class AppComponent {
     this.user$ = this.userCollectionRef.valueChanges();
   }
   
-
   title = 'users-app';
   newUsername = "";
   newStreet = "";
@@ -54,6 +52,8 @@ export class AppComponent {
   newPosition = "";
   addEmploymentError = "";
   addUserError = "";
+
+  displayedColumns: string[] = ["username", "address", "email", "phone"];
 
   onUsernameInput(username: string) {
     this.newUsername = username;
@@ -136,11 +136,9 @@ export class AppComponent {
       age: this.newAge,
       employment: this.allEmployment,
     }
-    console.log(thisUser)
-
     this.userCollectionRef.add(thisUser)
-
   }
 
+  
 
 }
