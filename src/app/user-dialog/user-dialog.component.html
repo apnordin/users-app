@@ -1,5 +1,24 @@
-<h2 mat-dialog-title>Mat Dialog Title</h2>
+<h1 class="title" mat-dialog-title>{{ data.username }}</h1>
 <mat-dialog-content>
-  This is the mat-dialog-content section
-  {{ data.username }}
+  <h2 class="header">Contact Info</h2>
+  <div>Email: {{ data.email }}</div>
+  <div>Phone: {{ data.phone }}</div>
+  <h2 class="header">Address</h2>
+  <div>
+    {{ data.address.street }}
+  </div>
+  <div>
+    {{ data.address.city }},&nbsp; {{ data.address.state }}&nbsp;{{
+      data.address.zip
+    }}
+  </div>
+  <h2 class="header">Employment History</h2>
+  <div class="all-jobs" *ngFor="let job of data.employment">
+    <h3 class="no-margin">{{ job.position }} at {{ job.company }}</h3>
+    <ul class="no-margin">
+      <li *ngFor="let respons of job.responsibilities">
+        {{ respons }}
+      </li>
+    </ul>
+  </div>
 </mat-dialog-content>

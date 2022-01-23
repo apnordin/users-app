@@ -23,6 +23,7 @@ export class UsersTableComponent implements OnInit {
 
   openUserDialog(clickableUser: User) {
     this.dialog.open(UserDialogComponent, {
+      minWidth: "60vw",
       data: clickableUser
     })
   } 
