@@ -52,9 +52,7 @@ export class AppComponent {
   newPosition = "";
   addEmploymentError = "";
   addUserError = "";
-
-
-
+  
   onUsernameInput(username: string) {
     this.newUsername = username;
   }

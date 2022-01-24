@@ -10,7 +10,7 @@ import {User} from "../app.component";
 })
 export class UsersTableComponent implements OnInit {
 
-  @Input() user$: any = []
+  @Input() users: any = []
 
   constructor(
     public dialog: MatDialog
