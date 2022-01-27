@@ -56,9 +56,11 @@ export class AppComponent implements OnInit {
   addUserError = "";
   searchTerm = "";
   allUsers: User[] = [];
+  tableUsers: User[] = [];
 
-  async console()  {
-   console.log("userss: ", this.allUsers)
+  console()  {
+   console.log("allUsers: ", this.allUsers)
+   console.log("tableUsers: ", this.tableUsers)
   }
 
   onUsernameInput(username: string) {
@@ -145,18 +147,27 @@ export class AppComponent implements OnInit {
     this.userCollectionRef.add(thisUser)
   }
 
-  onSearchInput(term: string) {
-    this.searchTerm = term;
+  searchUsers() {
+    const tableUsers: User[] = []
+    this.allUsers.forEach((user) => {
+      const usernameEmail = user.username.concat(" ", user.email).toLowerCase();
+      if (usernameEmail.includes(this.searchTerm.toLowerCase())) {
+        tableUsers.push(user)
+      }
+    })
+    this.tableUsers = [...tableUsers]
   }
 
-  searchUsers() {
-    console.log(this.searchTerm)
-    console.log(this.user$)
+  onSearchInput(term: string) {
+    this.searchTerm = term;
+    this.searchUsers()
   }
+
 
   ngOnInit() {
       this.user$.subscribe(
-        data => this.allUsers = data
+        data => this.allUsers = this.tableUsers = data
+        
       )
   }
 

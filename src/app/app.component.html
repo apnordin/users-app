@@ -217,7 +217,7 @@
     </div>
   </form>
   <h1 class="header">Existing Users</h1>
-  <form (ngSubmit)="searchUsers()">
+  <form>
     <mat-form-field class="search-form" appearance="outline">
       <mat-label>Search users</mat-label>
       <input
@@ -229,5 +229,5 @@
       />
     </mat-form-field>
   </form>
-  <users-table [users]="allUsers"></users-table>
+  <users-table [users]="tableUsers"></users-table>
 </div>
