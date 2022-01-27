@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+ import { map } from 'rxjs/operators';
 
 export interface User {
   username: string;
@@ -25,12 +26,13 @@ export interface User {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   userCollectionRef: AngularFirestoreCollection<User>;
   user$: Observable<User[]>;
+  
   constructor(private afs: AngularFirestore) {
     this.userCollectionRef= afs.collection("users");
-    this.user$ = this.userCollectionRef.valueChanges();
+    this.user$ = this.userCollectionRef.valueChanges()
   }
   
   title = 'users-app';
@@ -52,7 +54,13 @@ export class AppComponent {
   newPosition = "";
   addEmploymentError = "";
   addUserError = "";
-  
+  searchTerm = "";
+  allUsers: User[] = [];
+
+  async console()  {
+   console.log("userss: ", this.allUsers)
+  }
+
   onUsernameInput(username: string) {
     this.newUsername = username;
   }
@@ -137,5 +145,19 @@ export class AppComponent {
     this.userCollectionRef.add(thisUser)
   }
 
+  onSearchInput(term: string) {
+    this.searchTerm = term;
+  }
+
+  searchUsers() {
+    console.log(this.searchTerm)
+    console.log(this.user$)
+  }
+
+  ngOnInit() {
+      this.user$.subscribe(
+        data => this.allUsers = data
+      )
+  }
 
 }
