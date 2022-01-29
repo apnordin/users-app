@@ -140,7 +140,13 @@ export class AppComponent implements OnInit {
       employment: this.allEmployment,
     }
     this.userCollectionRef.add(thisUser)
-    this.newUsername, this.newEmail, this.newPhone, this.newAge, this.newStreet, this.newCity, this.newState = "" 
+    this.newUsername = "",
+    this.newEmail = "",
+    this.newPhone = "",
+    this.newAge = undefined,
+    this.newStreet = "",
+    this.newCity = "",
+    this.newState = "" 
     this.newZip = undefined
     this.allEmployment = []
   }

@@ -40,7 +40,7 @@
           <input
             matInput
             #phoneInput="ngModel"
-            type="text"
+            type="tel"
             [value]="newPhone"
             (input)="onPhoneInput(phoneInput.value)"
             required
@@ -193,7 +193,7 @@
         mat-flat-button
         color="primary"
         type="submit"
-        [disabled]="!formControl.form.valid"
+        [disabled]="!formControl.form.valid || allEmployment.length < 1"
       >
         Add User
       </button>
