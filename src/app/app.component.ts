@@ -58,11 +58,6 @@ export class AppComponent implements OnInit {
   allUsers: User[] = [];
   tableUsers: User[] = [];
 
-  console()  {
-   console.log("allUsers: ", this.allUsers)
-   console.log("tableUsers: ", this.tableUsers)
-  }
-
   onUsernameInput(username: string) {
     this.newUsername = username;
   }
@@ -145,6 +140,9 @@ export class AppComponent implements OnInit {
       employment: this.allEmployment,
     }
     this.userCollectionRef.add(thisUser)
+    this.newUsername, this.newEmail, this.newPhone, this.newAge, this.newStreet, this.newCity, this.newState = "" 
+    this.newZip = undefined
+    this.allEmployment = []
   }
 
   searchUsers() {
