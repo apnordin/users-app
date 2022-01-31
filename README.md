@@ -1,6 +1,6 @@
 # UsersApp
 
-The goal of this app is to satisfy the following requirements:
+The goal of this app is to satisfy the following requirements using Angular and Firestore
 
 - Single page angular application
 - Accepts username, address, contact info, age, and employment history in a form
